@@ -11,7 +11,7 @@
     }else {
         // faccio un altro controllo se es. chiedi 20 numeri e l'array dei numeri non li contiene stampo brutalmente l'array in ordine secco, se no stampo i caratteri univocamente senza farli ripetere
         if($_GET['nCharactersPsw'] >= count($carachterPsw)) {
-            for($i = 0; $i < $_GET['nCharactersPsw']; $i++) {
+            for($i = 0; $i < count($carachterPsw); $i++) {
                 $pswGenerated .= $carachterPsw[$i];
             } 
             }else {

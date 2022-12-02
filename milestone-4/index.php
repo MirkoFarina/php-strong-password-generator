@@ -39,6 +39,7 @@ require __DIR__ . '/./functions.php';
         '='
     ];
     $carachterPsw = array_merge($characterNumbers, $characterLetters, $characterSymbols);
+    
     if(isset($_GET['include'])) {
         $useCharacaters = $_GET['include'];
         $filterCharacters = [];
