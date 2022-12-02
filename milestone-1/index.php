@@ -44,11 +44,10 @@
     function generatePsw($carachterPsw){
         $pswGenerated = '';
         for($i = 0; $i < $_GET['nCharactersPsw']; $i++) {
-            $pswGenerated .= $carachterPsw[rand(0, count($carachterPsw))];
+            $pswGenerated .= $carachterPsw[rand(0, count($carachterPsw) - 1)];
         }
         echo $pswGenerated;
     };
-    if(!empty($_GET['nCharactersPsw'])) generatePsw($carachterPsw);
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +75,11 @@ Scriviamo tutto (logica e layout) in un unico file index.php -->
             </form>
         </div>
     </div>
+    <?php  if(!empty($_GET['nCharactersPsw'])) : ?>
+        <h1>
+            <?php generatePsw($carachterPsw); ?>
+        </h1>
+    <?php  endif; ?>
 </div>
 </body>
 </html>
