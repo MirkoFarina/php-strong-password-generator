@@ -18,7 +18,16 @@ require __DIR__ . '/./functions.php';
         'c',
         'D',
         'E',
-        'f'
+        'f',
+        'X',
+        'Z',
+        'f',
+        'g',
+        'h',
+        'l',
+        'm',
+        'n',
+        'o'
     ];
 
     $characterSymbols = [
