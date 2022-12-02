@@ -1,12 +1,21 @@
-<?php 
+<?php
     $carachterPsw = [
-        'letters' => [
-            'a','b','c','d','e','f'
-        ],
-        'numbers' => [
-            0,1,2,3,4,5,6,7,8,9
-        ],
-        'specialCharacters' => [
+            'a',
+            'b',
+            'c',
+            'd',
+            'e',
+            'f',
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
             '!',
             '?',
             '&',
@@ -29,8 +38,17 @@
             '#',
             '_',
             '='
-        ]
+        
     ];
+
+    function generatePsw($carachterPsw){
+        $pswGenerated = '';
+        for($i = 0; $i < $_GET['nCharactersPsw']; $i++) {
+            $pswGenerated .= $carachterPsw[rand(0, count($carachterPsw))];
+        }
+        echo $pswGenerated;
+    };
+    if(!empty($_GET['nCharactersPsw'])) generatePsw($carachterPsw);
 ?>
 
 <!DOCTYPE html>
