@@ -12,23 +12,7 @@ require __DIR__ . '/./functions.php';
         8,
         9
     ];
-    $characterLetters = [
-        'a',
-        'b',
-        'c',
-        'D',
-        'E',
-        'f',
-        'X',
-        'Z',
-        'f',
-        'g',
-        'h',
-        'l',
-        'm',
-        'n',
-        'o'
-    ];
+    $characterLetters = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
     $characterSymbols = [
         '!',
