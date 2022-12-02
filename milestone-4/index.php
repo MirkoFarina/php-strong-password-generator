@@ -46,15 +46,30 @@ require __DIR__ . '/./functions.php';
         '='
     ];
     $carachterPsw = array_merge($characterNumbers, $characterLetters, $characterSymbols);
-    // lancio la session solo se il get non è vuoto
-    if(!empty($_GET['nCharactersPsw'])) {
-        // se il get contiene qualcosa inizia la sessione
-        session_start();
-        // inizializzo la variabile della sessione
-        $_SESSION['nCharacters'] = generatePsw($carachterPsw);
-        // creo il redirect verso la landing-page
-        header('Location: ./landing-page.php');
+    
+    if(isset($_GET['include'])) {
+        $useCharacaters = $_GET['include'];
+        $filterCharacters = [];
+        if(in_array('symbols', $useCharacaters)) {
+            $filterCharacters = array_merge($characterSymbols, $filterCharacters);
+        }
+        if(in_array('letters', $useCharacaters)) {
+            $filterCharacters = array_merge($characterLetters , $filterCharacters);
+        }
+        if(in_array('numbers', $useCharacaters)) {
+            $filterCharacters = array_merge($characterNumbers , $filterCharacters);
+        }
+        $carachterPsw = $filterCharacters;
     }
+    // lancio la session solo se il get non è vuoto
+     if(!empty($_GET['nCharactersPsw'])) {
+         // se il get contiene qualcosa inizia la sessione
+         session_start();
+         // inizializzo la variabile della sessione
+         $_SESSION['nCharacters'] = generatePsw($carachterPsw);
+        // creo il redirect verso la landing-page
+         header('Location: ./landing-page.php');
+     }
 ?>
 
 <!DOCTYPE html>
@@ -78,13 +93,16 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
         <form action="./index.php" method="GET">
             <div class="number">
                 <label class="form-label" for="inputNPsw">Inserisci il numero di caratteri della tua password</label> 
+                <p>
+                    inserisci un numero compreso tra 8 e 30
+                </p>
                 <input class="form-control"  type="number" placeholder="Inserisci il numero di caratteri" name="nCharactersPsw" id="inputNPsw" min="8" max="30">
             </div>
             <div class="checkbox">
                 <label for="checkBox">QUALI CARATTERI USARE:</label> <br>
-                <input type="checkbox" id="checkBox" name="include[]" value="symbols"> CARATTERI SPECIALI <br>
-                <input type="checkbox" id="checkBox" name="include[]" value="letters"> LETTERE <br>
-                <input type="checkbox" id="checkBox" name="include[]" value="numbers"> Numeri
+                <input type="checkbox" id="checkBox" name="include[]" value="symbols" checked> CARATTERI SPECIALI <br>
+                <input type="checkbox" id="checkBox1" name="include[]" value="letters" checked> LETTERE <br>
+                <input type="checkbox" id="checkBox2" name="include[]" value="numbers" checked> Numeri
             </div>
             <div class="radio">
                 <label for="radiobox"> Caratteri uguali:</label> 
