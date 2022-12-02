@@ -46,7 +46,6 @@ require __DIR__ . '/./functions.php';
         '='
     ];
     $carachterPsw = array_merge($characterNumbers, $characterLetters, $characterSymbols);
-    
     if(isset($_GET['include'])) {
         $useCharacaters = $_GET['include'];
         $filterCharacters = [];
@@ -62,14 +61,14 @@ require __DIR__ . '/./functions.php';
         $carachterPsw = $filterCharacters;
     }
     // lancio la session solo se il get non è vuoto
-     if(!empty($_GET['nCharactersPsw'])) {
-         // se il get contiene qualcosa inizia la sessione
-         session_start();
-         // inizializzo la variabile della sessione
-         $_SESSION['nCharacters'] = generatePsw($carachterPsw);
-        // creo il redirect verso la landing-page
-         header('Location: ./landing-page.php');
-     }
+    if(!empty($_GET['nCharactersPsw'])) {
+        // se il get contiene qualcosa inizia la sessione
+        session_start();
+        // inizializzo la variabile della sessione
+        $_SESSION['nCharacters'] = generatePsw($carachterPsw);
+       // creo il redirect verso la landing-page
+        header('Location: ./landing-page.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +105,7 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
             </div>
             <div class="radio">
                 <label for="radiobox"> Caratteri uguali:</label> 
-                <input type="radio" id="radiobox" name="equalCaracters" value="si"> SI 
+                <input type="radio" id="radiobox" name="equalCaracters" value="si" checked> SI 
                 <input type="radio" id="radiobox" name="equalCaracters" value="no"> NO
             </div>
             <button type="submit" class="btn btn-primary my-5">Genera</button>
