@@ -1,4 +1,5 @@
 <?php
+    require __DIR__ . '/./functions.php';
     $carachterPsw = [
             'a',
             'b',
@@ -40,14 +41,6 @@
             '='
         
     ];
-
-    function generatePsw($carachterPsw){
-        $pswGenerated = '';
-        for($i = 0; $i < $_GET['nCharactersPsw']; $i++) {
-            $pswGenerated .= $carachterPsw[rand(0, count($carachterPsw) - 1)];
-        }
-        echo $pswGenerated;
-    };
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +54,10 @@
     <title>PHP Strong Password Generator</title>
 </head>
 <body>
+<!--
+            consegna    
+Milestone 2
+Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php che includeremo poi nella pagina principale -->
 <div class="container">
     <div class="row">
         <div class="col my-5">
