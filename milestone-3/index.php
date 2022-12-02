@@ -41,6 +41,15 @@
             '='
         
     ];
+
+    if(!empty($_GET['nCharactersPsw'])) {
+        // se il get contiene qualcosa inizia la sessione
+        session_start();
+        // inizializzo la variabile della sessione
+        $_SESSION['nCharacters'] = generatePsw($carachterPsw);
+        // creo il redirect verso la landing-page
+        header('Location: ./landing-page.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -63,12 +72,16 @@
                 <button type="submit" class="btn btn-primary my-5">Genera</button>
             </form>
         </div>
+        <?php 
+        if(isset($_GET['nCharactersPsw'])) :
+        ?>
+            <h5 class="text-danger">
+                INSERIRE UN VALORE PER POTER GENERARE LA PASSWORD
+            </h5>
+        <?php 
+        endif;
+        ?>
     </div>
-    <?php  if(!empty($_GET['nCharactersPsw'])) : ?>
-        <h1>
-            <?php generatePsw($carachterPsw); ?>
-        </h1>
-    <?php  endif; ?>
 </div>
 </body>
 </html>
